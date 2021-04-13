@@ -1,12 +1,16 @@
 import React, { Component } from "react";
 
 class PostList extends Component {
+  state = {
+    
+  }
   render() {
+    const iterPosts = () => {
+      console.log("red");
+    };
     return (
       <div>
-        <button className="posts">
-          /posts
-        </button>
+        <button onClick={iterPosts}>/posts</button>
       </div>
     );
   }
