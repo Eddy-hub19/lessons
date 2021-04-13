@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Component } from 'react';
 
 class Form extends Component {
   render() {
     return (
-      <div>
-        <h2> Компонент с формой </h2>
-      </div>
+     <form onSubmit={this.props.weatherMethod}>
+         <input type='text' name= 'city' placeholder='Город'/>
+         <button> Получить погоду </button>
+     </form>
     );
   }
 }
