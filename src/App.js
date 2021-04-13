@@ -77,7 +77,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    return () => console.log("did mount parent");
+    return () => console.log("will unmount parent");
   }, []);
 
   useEffect(() => {
