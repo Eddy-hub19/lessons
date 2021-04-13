@@ -1,0 +1,12 @@
+.posts,
+button {
+  margin-top: 20px;
+  width: 80px;
+  height: 30px;
+  border-radius: 45px;
+  background: rgb(36, 51, 190);
+  color: white;
+}
+button {
+  background: rgb(73, 78, 119);
+}
