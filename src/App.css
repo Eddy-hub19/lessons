@@ -1,11 +1,6 @@
-.posts,
 button {
   margin-top: 20px;
   width: 80px;
   height: 30px;
   border-radius: 45px;
-  background: #2433be;
-}
-button {
-  background: rgb(73, 78, 119);
 }
