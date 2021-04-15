@@ -1,49 +1,63 @@
-import React, { useState, useEffect } from "react";
-
-const url = "https://jsonplaceholder.typicode.com/todos/";
+import React from "react";
+import "./App.css";
 
 const App = () => {
-  const [counter, setCounter] = useState(1);
-  const [todo, setTodo] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const firstName = React.useRef();
+  const onSubmit = (evt) => {
 
-  const incCounter = () => {
-    setCounter(counter + 1);
+    evt.preventDefault();
+    console.log({firstName});
+    firstName.current.value = ''
+
+    //1
+
+    //   const {
+    //     target: {
+    //       elements: { firstName, lastName, email, age, pass },
+    //     },
+    //   } = evt;
+
+    //   alert(
+    //     JSON.stringify(
+    //       {
+    //         firstName: firstName.value,
+    //         lastName: lastName.value,
+    //         email: email.value,
+    //         age: age.value,
+    //         pass: pass.value,
+    //       },
+    //       null,
+    //       2
+    //     )
+    //   );
   };
-
-  const fetchTodos = async () => {
-    setIsLoading(true);
-    const response = await fetch(`${url}${counter}`); // 'https://jsonplaceholder.typicode.com/todos/2'
-    const data = await response.json();
-
-    // setTimeout(() => {
-    setTodo(data);
-    setIsLoading(false);
-    // }, 1000);
-  };
-  useEffect(() => {
-    fetchTodos();
-    return () => {
-      setTodo(null);
-    };
-  }, [counter]);
 
   return (
-    <>
-      <h1 onClick={incCounter}>HELLO REACT {counter}</h1>
+    <div>
+      <h1> INPUTS </h1>
+      <form onSubmit={onSubmit}>
+        <input
+          type="text"
+          name="firstName"
+          placeholder="enter your first name"/>
+        <br />
+        <br />
+        <input type="text" name="lastName" placeholder="enter your last name" />
+        <br />
+        <br />
+        <input type="email" name="email" placeholder="enter your email" />
+        <br />
+        <br />
+        <input type="number" name="age" placeholder="enter your age" />
+        <br />
+        <br />
+        <input type="password" name="pass" placeholder="enter your pass" />
+        <br />
+        <br />
 
-      {!todo && isLoading && <h1> LOADING DATA... </h1>}
-
-      {!!todo && (
-        <>
-          <hr />
-          <h3>
-            {todo.title} - {todo.completed.toString()} {todo.id}
-          </h3>
-          <hr />
-        </>
-      )}
-    </>
+        <button ref={firstName} onClick={onSubmit} type="submit">submit</button>
+      </form>
+    </div>
   );
 };
 
