@@ -1,13 +1,30 @@
 import React from "react";
 import "./App.css";
 
+// Uncontroled Inputs
+
 const App = () => {
   const firstName = React.useRef();
-  const onSubmit = (evt) => {
+  const LastName = React.useRef();
+  const email = React.useRef();
+  const age = React.useRef();
+  const password = React.useRef();
 
+  // const inputs = React.useRef({
+  //   firstName: React.useRef(),
+  //   LastName: React.useRef(),
+  //   email: React.useRef(),
+  //   age: React.useRef(),
+  //   password: React.useRef(),
+  // });
+
+  const onSubmit = (evt) => {
     evt.preventDefault();
-    console.log({firstName});
-    firstName.current.value = ''
+    console.log({ firstName });
+
+    // firstName.current.style.background = "red";
+    // firstName.current.focus();
+    // firstName.current.value = ''
 
     //1
 
@@ -17,19 +34,27 @@ const App = () => {
     //     },
     //   } = evt;
 
-    //   alert(
-    //     JSON.stringify(
-    //       {
-    //         firstName: firstName.value,
-    //         lastName: lastName.value,
-    //         email: email.value,
-    //         age: age.value,
-    //         pass: pass.value,
-    //       },
-    //       null,
-    //       2
-    //     )
-    //   );
+    alert(
+      JSON.stringify(
+        {
+          firstName: firstName.current.value,
+          lastName: LastName.current.value,
+          email: email.current.value,
+          age: age.current.value,
+          pass: password.current.value,
+        },
+        null,
+        2
+      )
+    );
+
+    firstName.current.value = "";
+    LastName.current.value = "";
+    email.current.value = "";
+    age.current.value = "";
+    password.current.value = "";
+
+    alert("Human your data saved");
   };
 
   return (
@@ -37,25 +62,47 @@ const App = () => {
       <h1> INPUTS </h1>
       <form onSubmit={onSubmit}>
         <input
+          ref={firstName}
           type="text"
           name="firstName"
-          placeholder="enter your first name"/>
+          placeholder="enter your first name"
+        />
         <br />
         <br />
-        <input type="text" name="lastName" placeholder="enter your last name" />
+        <input
+          ref={LastName}
+          type="text"
+          name="lastName"
+          placeholder="enter your last name"
+        />
         <br />
         <br />
-        <input type="email" name="email" placeholder="enter your email" />
+        <input
+          ref={email}
+          type="email"
+          name="email"
+          placeholder="enter your email"
+        />
         <br />
         <br />
-        <input type="number" name="age" placeholder="enter your age" />
+        <input
+          ref={age}
+          type="number"
+          name="age"
+          placeholder="enter your age"
+        />
         <br />
         <br />
-        <input type="password" name="pass" placeholder="enter your pass" />
+        <input
+          ref={password}
+          type="password"
+          name="pass"
+          placeholder="enter your pass"
+        />
         <br />
         <br />
 
-        <button ref={firstName} onClick={onSubmit} type="submit">submit</button>
+        <button type="submit">submit</button>
       </form>
     </div>
   );
