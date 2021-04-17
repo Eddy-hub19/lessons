@@ -9,18 +9,10 @@ const App = () => {
   const email = React.useRef();
   const age = React.useRef();
   const password = React.useRef();
-
-  // const inputs = React.useRef({
-  //   firstName: React.useRef(),
-  //   LastName: React.useRef(),
-  //   email: React.useRef(),
-  //   age: React.useRef(),
-  //   password: React.useRef(),
-  // });
+  const form = React.useRef();
 
   const onSubmit = (evt) => {
     evt.preventDefault();
-    console.log({ firstName });
 
     // firstName.current.style.background = "red";
     // firstName.current.focus();
@@ -34,10 +26,8 @@ const App = () => {
     //     },
     //   } = evt;
 
-    alert(
-      JSON.stringify(
-        {
-          firstName: firstName.current.value,
+    alert(JSON.stringify({
+          firstName: firstName.current,
           lastName: LastName.current.value,
           email: email.current.value,
           age: age.current.value,
@@ -47,22 +37,14 @@ const App = () => {
         2
       )
     );
-
-    firstName.current.value = "";
-    LastName.current.value = "";
-    email.current.value = "";
-    age.current.value = "";
-    password.current.value = "";
-
-    alert("Human your data saved");
+    form.current.reset();
   };
 
   return (
     <div>
       <h1> INPUTS </h1>
-      <form onSubmit={onSubmit}>
+      <form ref={form} onSubmit={onSubmit}>
         <input
-          ref={firstName}
           type="text"
           name="firstName"
           placeholder="enter your first name"
